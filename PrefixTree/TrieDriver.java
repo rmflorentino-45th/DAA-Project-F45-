@@ -1,3 +1,5 @@
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -21,42 +23,43 @@ public class TrieDriver {
         }
 
         System.out.println("--- Scalability Testing ---");
-        int[] inputSizes = {10, 100, 1000, 10000};
-        
+        int[] inputSizes = { 10, 100, 1000, 10000 };
+
         for (int n : inputSizes) {
-            if (n > wordCount) continue;
-            
+            if (n > wordCount)
+                continue;
+
             String[] testData = Arrays.copyOfRange(dictionary, 0, n);
-            
+
             long startTime = System.nanoTime();
 
             myStringAlgorithm(testData);
-        
+
             long endTime = System.nanoTime();
 
             long duration = (endTime - startTime);
 
             System.out.println("Execution time for n=" + testData.length + " : " + duration + "ns");
         }
-        
+
         System.out.println("\n--- Interactive Search ---");
         Trie trie = new Trie();
         for (int i = 0; i < wordCount; i++) {
             trie.insert(dictionary[i]);
         }
-        
+
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("Enter prefix to search: ");
             String prefix = scanner.next();
-            
+
             long startTime = System.nanoTime();
             List<String> results = trie.autocomplete(prefix);
             long duration = System.nanoTime() - startTime;
-            
+
             for (String match : results) {
                 System.out.println("Match found: " + match);
             }
-            
+
             if (results.isEmpty()) {
                 System.out.println("No matches found for prefix: " + prefix);
             } else {
