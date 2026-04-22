@@ -50,7 +50,6 @@ public class TestAlgorithms {
     }
 
 
-
     private static int loadDictionary(String filePath, String[] dictionary) {
         int count = 0;
         try (Scanner fileScanner = new Scanner(new File(filePath))) {
