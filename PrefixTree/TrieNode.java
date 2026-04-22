@@ -1,4 +1,4 @@
-
+package prefixTree;
 
 public class TrieNode {
     TrieNode[] children;
@@ -11,3 +11,4 @@ public class TrieNode {
         originalLine = null;
     }
 }
+

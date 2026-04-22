@@ -1,4 +1,4 @@
-
+package prefixTree;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,26 +22,6 @@ public class TrieDriver {
             return;
         }
 
-        System.out.println("--- Scalability Testing ---");
-        int[] inputSizes = { 10, 100, 1000, 10000 };
-
-        for (int n : inputSizes) {
-            if (n > wordCount)
-                continue;
-
-            String[] testData = Arrays.copyOfRange(dictionary, 0, n);
-
-            long startTime = System.nanoTime();
-
-            myStringAlgorithm(testData);
-
-            long endTime = System.nanoTime();
-
-            long duration = (endTime - startTime);
-
-            System.out.println("Execution time for n=" + testData.length + " : " + duration + "ns");
-        }
-
         System.out.println("\n--- Interactive Search ---");
         Trie trie = new Trie();
         for (int i = 0; i < wordCount; i++) {
@@ -57,7 +37,7 @@ public class TrieDriver {
             long duration = System.nanoTime() - startTime;
 
             for (String match : results) {
-                System.out.println("Match found: " + match);
+                System.out.println("Match found: " + match.split("\\s+")[0]);
             }
 
             if (results.isEmpty()) {
@@ -67,14 +47,6 @@ public class TrieDriver {
                 System.out.println("Search took: " + (duration / 1000000.0) + " ms");
             }
         }
-    }
-
-    public static void myStringAlgorithm(String[] testData) {
-        Trie trie = new Trie();
-        for (String data : testData) {
-            trie.insert(data);
-        }
-        trie.autocomplete("th");
     }
 
     private static int loadDictionary(String filePath, String[] dictionary) {
@@ -90,3 +62,4 @@ public class TrieDriver {
         return count;
     }
 }
+

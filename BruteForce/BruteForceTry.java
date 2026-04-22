@@ -1,4 +1,4 @@
-package BruteForce;
+package bruteForce;
 
 import java.util.Scanner;
 import java.io.File;
@@ -37,7 +37,7 @@ public class BruteForceTry {
 
         for (int i = 0; i < count; i++) {
             if (dict[i].startsWith(prefix)) {
-                System.out.println("Match found: " + dict[i]);
+                System.out.println("Match found: " + dict[i].split("\\s+")[0]);
                 matches++;
             }
         }
@@ -50,5 +50,15 @@ public class BruteForceTry {
             System.out.println("\nTotal matches: " + matches);
             System.out.println("Search took: " + (duration / 1000000.0) + " ms");
         }
+    }
+
+    public static int countMatches(String[] dict, int count, String prefix) {
+        int matches = 0;
+        for (int i = 0; i < count; i++) {
+            if (dict[i] != null && dict[i].startsWith(prefix)) {
+                matches++;
+            }
+        }
+        return matches;
     }
 }
